@@ -5,6 +5,7 @@
 #include "Cube.h"
 #include "TriGrid.h"
 #include "Ship.h"
+#include "RaceTrack.h"
 
 class ShipRace :
 	public Component
@@ -19,6 +20,9 @@ public:
 	void Stop();
 
 private:
+
+	RaceTrack* raceTrack;
+
 	Triangle* triangle;
 	Cube* cube;
 	TriGrid* triGrid;

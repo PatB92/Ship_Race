@@ -9,6 +9,7 @@ ShipRace::ShipRace()
 	//triGrid->SetPosition(5.f, 0.f, 0.f);
 
 	Ship* ship = new Ship();
+	RaceTrack* raceTrack = new RaceTrack();
 }
 
 ShipRace::~ShipRace()

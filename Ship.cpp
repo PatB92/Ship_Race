@@ -12,5 +12,5 @@ Ship::~Ship()
 
 void Ship::Update()
 {
-	SetRotation(GetRotation() + 10.f * gTimer->GetDeltaTime());	
+	SetRotationY(GetRotationY() + 10.f * gTimer->GetDeltaTime());	
 }
