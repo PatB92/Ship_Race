@@ -10,6 +10,7 @@ ShipRace::ShipRace()
 
 	Ship* ship = new Ship();
 	RaceTrack* raceTrack = new RaceTrack();
+	Obstacle* obstacle = new Obstacle();
 }
 
 ShipRace::~ShipRace()

@@ -1,14 +1,16 @@
-﻿La génération a démarré 2015-07-28 12:30:50.
+﻿La génération a démarré 2015-07-30 12:40:32.
      1>Projet "U:\git\TP Ship Race\TestEnvironment.vcxproj" sur le nœud 2 (Build cible(s)).
      1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(388,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (TP2.vcxproj).  This can lead to incorrect clean and rebuild behavior.
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt RaceTrack.cpp
-         RaceTrack.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Obstacle.cpp
+         Obstacle.cpp
          c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+     1>cl : Ligne de commande warning D9028: échec de la régénération minimale, passage à la génération normale
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"U:\git\TP Ship Race\Debug\TestEnvironment.exe" /INCREMENTAL /NOLOGO d3d9.lib d3dx9d.lib dxguid.lib dxerr.lib dinput8.lib irrklang.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"U:\git\TP Ship Race\Debug\TestEnvironment.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"U:\git\TP Ship Race\Debug\TestEnvironment.lib" /MACHINE:X86 Debug\Ball.obj
          Debug\Block.obj
          Debug\Main.obj
+         Debug\Obstacle.obj
          Debug\Peggle.obj
          Debug\RaceTrack.obj
          Debug\Ship.obj
@@ -20,4 +22,4 @@
 
 La génération a réussi.
 
-Temps écoulé 00:00:02.91
+Temps écoulé 00:00:03.22

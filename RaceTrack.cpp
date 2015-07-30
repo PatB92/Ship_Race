@@ -14,7 +14,27 @@ RaceTrack::~RaceTrack()
 
 void RaceTrack::Update()
 {
-	SetRotationZ(GetRotationZ() + 5.0f * gTimer->GetDeltaTime());
-	SetPosition(GetPosition().x, GetPosition().y, GetPosition().z - 1.0f * gTimer->GetDeltaTime());
+	ManageRaceTrack();
+}
 
+void RaceTrack::ManageRaceTrack()
+{
+	MovementOfTrack();
+	RepeatTrack();
+}
+
+// Makes the track go backward to give the impression of movement
+void RaceTrack::MovementOfTrack()
+{
+	SetRotationZ(GetRotationZ() + 5.0f * gTimer->GetDeltaTime());
+	SetPosition(GetPosition().x, GetPosition().y, GetPosition().z + 1.0f * gTimer->GetDeltaTime());
+}
+
+// When track reaches a certain point it repeats itself
+void RaceTrack::RepeatTrack()
+{
+	if (GetPosition().z > 1.0f)
+	{
+		SetPosition(GetPosition().x, GetPosition().y, 0.0f);
+	}
 }

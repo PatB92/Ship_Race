@@ -9,5 +9,12 @@ public:
 	~RaceTrack();
 
 	void Update();
+
+private:
+
+	// Helper function
+	void ManageRaceTrack();
+	void MovementOfTrack();
+	void RepeatTrack();
 };
 
