@@ -7,18 +7,21 @@ class Obstacle :
 {
 public:
 	Obstacle();
-	Obstacle(float x, float y, float z);
+	Obstacle(float x, float y, float z,bool m);
 	~Obstacle();
 
 	void Update();
+
+	void Movement();
+	void Respawn();
 
 private:
 
 	D3DXVECTOR3 mSpawnPos;
 
+	bool move, respawning;
+
 	// Helper functions
-	void Movement();
-	void RespawnManager();
-	void Respawn();
+	
 };
 

@@ -6,14 +6,17 @@ Obstacle::Obstacle()
 	, mSpawnPos(0.0f, 0.0f, 0.0f)
 {
 	SetPosition(mSpawnPos.x, mSpawnPos.y, mSpawnPos.z);
-	//SetScale(1.5f, 1.5f, 1.0f);
+	SetScale(1.5f, 1.5f, 1.0f);
 }
 
-Obstacle::Obstacle(float x, float y, float z)
+Obstacle::Obstacle(float x, float y, float z, bool m)
 	: PrimitiveModel(PrimitiveModel_Type::CUBE)
 	, mSpawnPos(x, y, z)
+	, move(m)
+	, respawning(false)
 {
 	SetPosition(mSpawnPos.x, mSpawnPos.y, mSpawnPos.z);
+	SetScale(5.0f, 5.0f, 0.5f);
 }
 
 
@@ -31,22 +34,17 @@ void Obstacle::Update()
 // Handles the Movement of the Obstacle
 void Obstacle::Movement()
 {
-	SetPosition(GetPosition().x, GetPosition().y, GetPosition().z - 200.0f * gTimer->GetDeltaTime());
+	respawning = false;
 
-	RespawnManager();
-}
-
-// Handles when the Obstacle must Respawn
-void Obstacle::RespawnManager()
-{
-	if (GetPosition().z < -15.0f)
+	if (move)
 	{
-		Respawn();
+		SetPosition(GetPosition().x, GetPosition().y, GetPosition().z - 400.0f * gTimer->GetDeltaTime());
 	}
 }
 
 // Respawn function
 void Obstacle::Respawn()
 {
-	SetPosition(mSpawnPos.x, mSpawnPos.y, 250.0f);
+	SetPosition(mSpawnPos.x, mSpawnPos.y, 500.0f);
+	respawning = true;
 }

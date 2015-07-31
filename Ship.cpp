@@ -14,7 +14,7 @@ void Ship::Update()
 {
 	if (GetPosition().x > -10)
 	{
-		if (gDInput->keyDown(DIK_LEFT))
+		if (gDInput->keyDown(DIK_LEFT)||gDInput->keyDown(DIK_A))
 		{
 			SetPosition(GetPosition().x - 10.f * gTimer->GetDeltaTime(), GetPosition().y, 2.f);
 		}
@@ -22,7 +22,7 @@ void Ship::Update()
 
 	if (GetPosition().x < 10)
 	{
-		if (gDInput->keyDown(DIK_RIGHT))
+		if (gDInput->keyDown(DIK_RIGHT) || gDInput->keyDown(DIK_D))
 		{
 			SetPosition(GetPosition().x + 10.f * gTimer->GetDeltaTime(), GetPosition().y, 2.f);
 		}
@@ -30,7 +30,7 @@ void Ship::Update()
 
 	if (GetPosition().y < 7)
 	{
-		if (gDInput->keyDown(DIK_UP))
+		if (gDInput->keyDown(DIK_UP) || gDInput->keyDown(DIK_W))
 		{
 			SetPosition(GetPosition().x, GetPosition().y + 10.f * gTimer->GetDeltaTime(), 2.f);
 		}
@@ -39,7 +39,7 @@ void Ship::Update()
 
 	if (GetPosition().y > -7)
 	{
-		if (gDInput->keyDown(DIK_DOWN))
+		if (gDInput->keyDown(DIK_DOWN) || gDInput->keyDown(DIK_S))
 		{
 			SetPosition(GetPosition().x, GetPosition().y - 10.f * gTimer->GetDeltaTime(), 2.f);
 		}
