@@ -45,7 +45,7 @@ void FontApp::Draw()
 	RECT fontRect;
 	::GetClientRect(gApp->GetMainWindow(), &fontRect);
 
-	mFont->DrawTextA(0, _T("LIFE: " Score()), -1, &fontRect,
+	mFont->DrawTextA(0, _T("LIFE: 1" ), -1, &fontRect,
 		DT_BOTTOM | DT_BOTTOM | DT_SINGLELINE,
 		D3DCOLOR_XRGB(0,0,0));
 }
