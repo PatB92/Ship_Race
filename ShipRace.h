@@ -21,11 +21,8 @@ public:
 	void Stop();
 
 private:
-
-
-
-	Triangle* triangle;
-	Cube* cube;
-	TriGrid* triGrid;
+	RaceTrack* raceTrack;
+	Ship* ship;
+	Obstacle* obstacles[9];
 };
 

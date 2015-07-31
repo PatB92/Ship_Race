@@ -3,21 +3,25 @@
 
 ShipRace::ShipRace()
 {
-	//triangle = new Triangle();
-	//cube = new Cube();
-	//triGrid = new TriGrid(100, 100, 1.f);
-	//triGrid->SetPosition(5.f, 0.f, 0.f);
-
 	Ship* ship = new Ship();
 	RaceTrack* raceTrack = new RaceTrack();
-	Obstacle* obstacle = new Obstacle();
+	
+	obstacles[1] = new Obstacle(3.5f,5.0f,500.f);
+	obstacles[2] = new Obstacle(-3.5f, 5.0f, 500.f);
+	obstacles[3] = new Obstacle(3.5f, 0.0f, 500.f);
+	obstacles[4] = new Obstacle(-3.5f, 0.0f, 500.f);
+	obstacles[5] = new Obstacle(3.5f, -5.0f, 500.f);
+	obstacles[6] = new Obstacle(-3.5f, -5.0f, 500.f);
+	obstacles[7] = new Obstacle(3.5f, -10.0f, 500.f);
+	obstacles[8] = new Obstacle(-3.5f, -10.0f, 500.f);
+	obstacles[9] = new Obstacle(3.5f, -15.0f, 500.f);
+
+	
 }
 
 ShipRace::~ShipRace()
 {
-	//delete triangle;
-	//delete cube;
-	//delete triGrid;
+
 }
 
 void ShipRace::Start()

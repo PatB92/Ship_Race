@@ -7,6 +7,7 @@ class Obstacle :
 {
 public:
 	Obstacle();
+	Obstacle(float x, float y, float z);
 	~Obstacle();
 
 	void Update();
