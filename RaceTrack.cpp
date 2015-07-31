@@ -27,13 +27,13 @@ void RaceTrack::ManageRaceTrack()
 void RaceTrack::MovementOfTrack()
 {
 	SetRotationZ(GetRotationZ() + 5.0f * gTimer->GetDeltaTime());
-	SetPosition(GetPosition().x, GetPosition().y, GetPosition().z + 1.0f * gTimer->GetDeltaTime());
+	SetPosition(GetPosition().x, GetPosition().y, GetPosition().z - 2000.0f * gTimer->GetDeltaTime());
 }
 
 // When track reaches a certain point it repeats itself
 void RaceTrack::RepeatTrack()
 {
-	if (GetPosition().z > 1.0f)
+	if (GetPosition().z < -1000.0f)
 	{
 		SetPosition(GetPosition().x, GetPosition().y, 0.0f);
 	}
