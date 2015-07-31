@@ -26,7 +26,7 @@ void Ship::Movement()
 
 void Ship::MoveUp()
 {
-	if (GetPosition().y < 7)
+	if (GetPosition().y < 7.49)
 	{
 		if (gDInput->keyDown(DIK_UP) || gDInput->keyDown(DIK_W))
 		{
@@ -37,7 +37,7 @@ void Ship::MoveUp()
 
 void Ship::MoveDown()
 {
-	if (GetPosition().y > -7)
+	if (GetPosition().y > -7.49)
 	{
 		if (gDInput->keyDown(DIK_DOWN) || gDInput->keyDown(DIK_S))
 		{
@@ -47,7 +47,7 @@ void Ship::MoveDown()
 }
 void Ship::MoveLeft()
 {
-	if (GetPosition().x > -10)
+	if (GetPosition().x > -7.49)
 	{
 		if (gDInput->keyDown(DIK_LEFT) || gDInput->keyDown(DIK_A))
 		{
@@ -58,7 +58,7 @@ void Ship::MoveLeft()
 
 void Ship::MoveRight()
 {
-	if (GetPosition().x < 10)
+	if (GetPosition().x < 7.49)
 	{
 		if (gDInput->keyDown(DIK_RIGHT) || gDInput->keyDown(DIK_D))
 		{

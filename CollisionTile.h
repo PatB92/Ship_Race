@@ -2,8 +2,7 @@
 
 #include "PrimitiveModel.h"
 
-class CollisionTile:
-	public PrimitiveModel
+class CollisionTile
 {
 public:
 	CollisionTile();
@@ -17,9 +16,6 @@ public:
 	float height;
 	float width;
 	bool isActive;
-
-private:
-
 
 };
 

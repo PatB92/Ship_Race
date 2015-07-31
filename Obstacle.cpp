@@ -12,7 +12,7 @@ Obstacle::Obstacle()
 Obstacle::Obstacle(float x, float y, float z, bool m)
 	: PrimitiveModel(PrimitiveModel_Type::CUBE)
 	, mSpawnPos(x, y, z)
-	, move(m)
+	, mIsMoving(m)
 	, respawning(false)
 {
 	SetPosition(mSpawnPos.x, mSpawnPos.y, mSpawnPos.z);
@@ -34,9 +34,12 @@ void Obstacle::Movement()
 {
 	respawning = false;
 
-	if (move)
+	if (mIsMoving)
 	{
-		SetPosition(GetPosition().x, GetPosition().y, GetPosition().z - 400.0f * gTimer->GetDeltaTime());
+		//SetPosition(GetPosition().x, GetPosition().y, GetPosition().z - 400.0f * gTimer->GetDeltaTime());
+
+		// TEMP FOR DEBUGGING
+		SetPosition(GetPosition().x, GetPosition().y, GetPosition().z - 200.0f * gTimer->GetDeltaTime());
 	}
 }
 

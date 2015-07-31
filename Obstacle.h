@@ -18,7 +18,7 @@ public:
 	bool ReachedLimit();
 
 	// Values
-	bool move;
+	bool mIsMoving;
 
 private:
 

@@ -1,13 +1,12 @@
 #pragma once
 
 #include "Component.h"
-#include "Triangle.h"
-#include "Cube.h"
-#include "TriGrid.h"
 #include "Ship.h"
 #include "RaceTrack.h"
 #include "Obstacle.h"
 #include "CollGrid.h"
+#include "EndScreen.h"
+
 
 class ShipRace :
 	public Component
@@ -22,10 +21,13 @@ public:
 	void Stop();
 
 	// Helper Functions
+	void Init();
 	void InitObstacles();
-	void ObstacleSpawnManager();
-	void ResetObstacles(int i);
-	void VerifyCollision();
+	bool ObstacleSpawnManager();
+	void ResetObstacles();
+	bool VerifyCollision();
+	void ResetGame();
+	void EndingScreen();
 
 	int mRnd;
 
@@ -35,5 +37,6 @@ private:
 	Obstacle* mObstacles[9];
 	CollGrid* collisionGrid;
 	CollisionTile* mCurrentInActiveTile;
+	EndScreen* endScreen;
 };
 

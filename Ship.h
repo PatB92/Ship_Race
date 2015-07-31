@@ -15,6 +15,10 @@ public:
 	// Getter
 	float GetPosX() { return GetPosition().x; };
 	float GetPosY() { return GetPosition().y; };
+	
+	// Setter
+	void SetShipStatus(bool status) { SetActive(status); };
+	void SetShipPos(float x, float y, float z) { SetPosition(x, y, z); };
 
 private:
 

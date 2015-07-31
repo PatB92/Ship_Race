@@ -3,11 +3,16 @@
 
 ShipRace::ShipRace()
 {
-	// Init Game Components
+	Init();
+}
+
+void ShipRace::Init()
+{
 	ship = new Ship();
 	raceTrack = new RaceTrack();
 	collisionGrid = new CollGrid();
 	InitObstacles();
+	mCurrentInActiveTile = collisionGrid->collisionTiles[4];
 }
 
 void ShipRace::InitObstacles()
@@ -21,8 +26,6 @@ void ShipRace::InitObstacles()
 	mObstacles[6] = new Obstacle(-5.0f, -5.0f, 1000.f, true);
 	mObstacles[7] = new Obstacle(0.0f, -5.0f, 1000.f, true);
 	mObstacles[8] = new Obstacle(5.0f, -5.0f, 1000.f, true);
-
-	mCurrentInActiveTile = collisionGrid->collisionTiles[4];
 }
 
 
@@ -38,7 +41,10 @@ void ShipRace::Start()
 
 void ShipRace::Update()
 {
-	ObstacleSpawnManager();
+	if (!ObstacleSpawnManager())
+	{
+		EndingScreen();
+	}
 }
 
 void ShipRace::Draw()
@@ -51,62 +57,100 @@ void ShipRace::Stop()
 
 }
 
-// Handles the respawn of obsacles
-void ShipRace::ObstacleSpawnManager()
+// Handles the respawn of obsacles and returns if it was possible or not (depending on collision)
+bool ShipRace::ObstacleSpawnManager()
 {
-	// Get Random Number
-	mRnd = rand() % 9;
-	
-	// If one obstacles reaches the limit, they're all Reset
 	for (int i = 0; i < 9; ++i)
 	{
+		// If Obstacles have reached the collision point
 		bool reached = mObstacles[i]->ReachedLimit();
 		if (reached)
 		{
-			// Verify Collision
-			// if no collision -> Reset Obstacles
-			// If collision -> Game Over
-			VerifyCollision();
-			ResetObstacles(mRnd);
-			break;
+			bool collision = VerifyCollision();
+
+			// If there was no collision, Reset all Obstacle values and respawns them
+			if (!collision)
+			{
+				ResetObstacles();
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 	}
+	return true;
 }
 
 // Reset all the obstacles at their spawn point and stops a random one
-void ShipRace::ResetObstacles(int rnd)
+void ShipRace::ResetObstacles()
 {
+	// Get Random Number
+	mRnd = rand() % 9;
+
 	for (int i = 0; i < 9; ++i)
 	{
+		// Respawn all obstacles
 		mObstacles[i]->Respawn();
 
 		// Activates or Deactivates depending on the random number
-		if (i == rnd)
+		if (i == mRnd)
 		{
-			mObstacles[i]->move = false;
+			mObstacles[i]->mIsMoving = false;
 
 			// Associate the unspawned obstacle to the collision grid
 			mCurrentInActiveTile = collisionGrid->collisionTiles[i];
-
-			// Deactivates that portion of the grid (--------------------TO MODIFY TO CHANGE THE BOOL)
-			collisionGrid->collisionTiles[i]->SetActive(false);
 		}
 		else
 		{
-			mObstacles[i]->move = true;
-
-			// Activates that portion of the grid (--------------------TO MODIFY TO CHANGE THE BOOL)
-			collisionGrid->collisionTiles[i]->SetActive(true);
+			mObstacles[i]->mIsMoving = true;
 		}
 	}
 }
 
+// Verifies if there was a collision between player and obstacles
 bool ShipRace::VerifyCollision()
 {
-	std::cout << ship->GetPosX() << std::endl;
-	std::cout << ship->GetPosX() << std::endl;
+	// Get Dimensions of the path the player must take
+	float leftBorder = mCurrentInActiveTile->posX - mCurrentInActiveTile->width/2;
+	float rightBorder = mCurrentInActiveTile->posX + mCurrentInActiveTile->width/2;
+	float topBorder = mCurrentInActiveTile->posY + mCurrentInActiveTile->width/2;
+	float bottomBorder = mCurrentInActiveTile->posY - mCurrentInActiveTile->width/2;
 
-	std::cout << mCurrentInActiveTile->posX << std::endl;
-	std::cout << mCurrentInActiveTile->posY << std::endl;
+	// Verifies if the player is within that window
+	if (ship->GetPosX() >= leftBorder && ship->GetPosX() <= rightBorder
+		&& ship->GetPosY() <= topBorder && ship->GetPosY() >= bottomBorder)
+	{
+		std::cout << "YOU'RE OK" << std::endl;
+		return false;
+	}
+	return true;
+}
 
+// Reset the Obstacles and the Player
+void ShipRace::ResetGame()
+{
+	ResetObstacles();
+	ship->SetShipStatus(true);
+	ship->SetShipPos(0.0f, 0.0f, 0.0f);
+}
+
+void ShipRace::EndingScreen()
+{
+	endScreen = new EndScreen();
+
+	ship->SetShipStatus(false);
+
+	// Enter to Replay
+	if (gDInput->keyDown(DIK_RETURN))
+	{
+		ResetGame();
+	}
+
+	// Backspace to Quit
+	if (gDInput->keyDown(DIK_BACKSPACE))
+	{
+		exit(0);
+	}
 }

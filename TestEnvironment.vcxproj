@@ -92,6 +92,7 @@
     <ClCompile Include="Block.cpp" />
     <ClCompile Include="CollGrid.cpp" />
     <ClCompile Include="CollisionTile.cpp" />
+    <ClCompile Include="EndScreen.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Obstacle.cpp" />
     <ClCompile Include="Peggle.cpp" />
@@ -104,6 +105,7 @@
     <ClInclude Include="Block.h" />
     <ClInclude Include="CollGrid.h" />
     <ClInclude Include="CollisionTile.h" />
+    <ClInclude Include="EndScreen.h" />
     <ClInclude Include="Obstacle.h" />
     <ClInclude Include="Peggle.h" />
     <ClInclude Include="RaceTrack.h" />
