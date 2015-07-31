@@ -28,6 +28,9 @@ public:
 	bool VerifyCollision();
 	void ResetGame();
 	void EndingScreen();
+	void DisableGame();
+	void ReplayGame();
+	void QuitGame();
 
 	int mRnd;
 
@@ -38,5 +41,8 @@ private:
 	CollGrid* collisionGrid;
 	CollisionTile* mCurrentInActiveTile;
 	EndScreen* endScreen;
+
+	D3DXVECTOR3 mOriginCamPos;
+	bool mIsGameOver;
 };
 

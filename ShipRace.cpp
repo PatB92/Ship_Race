@@ -3,16 +3,21 @@
 
 ShipRace::ShipRace()
 {
+	
 	Init();
 }
 
 void ShipRace::Init()
 {
+	Textures->LoadTexture(Texture::END_SCREEN, "Images/EndingScreen.png");
+	mIsGameOver = false;
 	ship = new Ship();
 	raceTrack = new RaceTrack();
 	collisionGrid = new CollGrid();
+	endScreen = new EndScreen();
 	InitObstacles();
 	mCurrentInActiveTile = collisionGrid->collisionTiles[4];
+	mOriginCamPos = gEngine->GetCamera()->GetCamPos();
 }
 
 void ShipRace::InitObstacles()
@@ -31,7 +36,10 @@ void ShipRace::InitObstacles()
 
 ShipRace::~ShipRace()
 {
-
+	//delete ship;
+	//delete raceTrack;
+	//delete collisionGrid;
+	//delete endScreen;
 }
 
 void ShipRace::Start()
@@ -122,7 +130,6 @@ bool ShipRace::VerifyCollision()
 	if (ship->GetPosX() >= leftBorder && ship->GetPosX() <= rightBorder
 		&& ship->GetPosY() <= topBorder && ship->GetPosY() >= bottomBorder)
 	{
-		std::cout << "YOU'RE OK" << std::endl;
 		return false;
 	}
 	return true;
@@ -131,24 +138,59 @@ bool ShipRace::VerifyCollision()
 // Reset the Obstacles and the Player
 void ShipRace::ResetGame()
 {
+	gEngine->GetCamera()->SetCamPos(mOriginCamPos);
+	endScreen->SetVisible(false);
+	mIsGameOver = false;
 	ResetObstacles();
 	ship->SetShipStatus(true);
+	raceTrack->SetTrackStatus(true);
 	ship->SetShipPos(0.0f, 0.0f, 0.0f);
+
+	for (int i = 0; i < 9; ++i)
+	{
+		mObstacles[i]->SetActive(true);
+	}
 }
 
+// Loads the ending screen and gives to possiblity to Replay or Quit
 void ShipRace::EndingScreen()
 {
-	endScreen = new EndScreen();
+	if (!mIsGameOver)
+	{
+		DisableGame();
+	}
+	ReplayGame();
+	QuitGame();
+}
 
+// Disables the game and ship
+void ShipRace::DisableGame()
+{
+	D3DXVECTOR3 camPos(0.0f, 0.0f, -1000.0f);
+	gEngine->GetCamera()->SetCamPos(camPos);
+	endScreen->SetVisible(true);
+	raceTrack->SetTrackStatus(false);
 	ship->SetShipStatus(false);
+	mIsGameOver = true;
 
-	// Enter to Replay
+	for (int i = 0; i < 9; ++i)
+	{
+		mObstacles[i]->SetActive(false);
+	}
+}
+
+// Player Presses Enter to Replay the Game
+void ShipRace::ReplayGame()
+{
 	if (gDInput->keyDown(DIK_RETURN))
 	{
 		ResetGame();
 	}
+}
 
-	// Backspace to Quit
+// Player Presses Backspace to Quit the Game
+void ShipRace::QuitGame()
+{
 	if (gDInput->keyDown(DIK_BACKSPACE))
 	{
 		exit(0);

@@ -122,7 +122,7 @@ technique TransformTech
 		vertexShader = compile vs_2_0 TransformVS();
 		pixelShader = compile ps_2_0 TransformPS();
 
-		FillMode = Solid;
+		//FillMode = Solid;
 	}
 
 	pass P1

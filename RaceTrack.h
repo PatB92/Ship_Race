@@ -10,6 +10,9 @@ public:
 
 	void Update();
 
+	// Setter
+	void SetTrackStatus(bool status) { SetActive(status); };
+
 private:
 
 	// Helper function

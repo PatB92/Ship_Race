@@ -1,7 +1,6 @@
 #include "Utils.h"
 #include "App.h"
 #include "Engine.h"
-#include "Peggle.h"
 #include "ShipRace.h"
 
 int WINAPI _tWinMain(HINSTANCE hInstance, 

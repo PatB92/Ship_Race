@@ -1,9 +1,16 @@
 #pragma once
 
-class EndScreen
+#include "Sprite.h"
+#include "ResourceIDs.h"
+
+class EndScreen:
+	public Sprite
 {
 public:
 	EndScreen();
 	~EndScreen();
+
+private:
+
 };
 

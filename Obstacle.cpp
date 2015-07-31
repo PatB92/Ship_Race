@@ -36,10 +36,7 @@ void Obstacle::Movement()
 
 	if (mIsMoving)
 	{
-		//SetPosition(GetPosition().x, GetPosition().y, GetPosition().z - 400.0f * gTimer->GetDeltaTime());
-
-		// TEMP FOR DEBUGGING
-		SetPosition(GetPosition().x, GetPosition().y, GetPosition().z - 200.0f * gTimer->GetDeltaTime());
+		SetPosition(GetPosition().x, GetPosition().y, GetPosition().z - 400.0f * gTimer->GetDeltaTime());
 	}
 }
 
@@ -50,6 +47,7 @@ void Obstacle::Respawn()
 	respawning = true;
 }
 
+// Return of the Obstacle reached is limit
 bool Obstacle::ReachedLimit()
 {
 	return GetPosition().z < -15.0f;

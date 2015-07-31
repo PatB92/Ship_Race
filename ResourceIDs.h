@@ -8,6 +8,7 @@ namespace Components
 		UNDEFINED,
 		Ball,
 		Block,
+		END_SCREEN
 	};
 }
 
@@ -15,6 +16,7 @@ namespace Texture
 {
 	enum ID
 	{
+		END_SCREEN,
 		ELEPHANT_DE_MER,
 		POW_POW_POW,
 		Ball,

@@ -3,6 +3,7 @@
 Ship::Ship()
 	: PrimitiveModel(PrimitiveModel_Type::CONE)
 	, initPos(0.0f, 0.0f, 2.0f)
+	, mPoints(0.0)
 {
 	SetPosition(initPos.x, initPos.y, initPos.z);
 }
@@ -16,6 +17,7 @@ void Ship::Update()
 	Movement();
 }
 
+// Handles Movement of the Player
 void Ship::Movement()
 {
 	MoveUp();
@@ -24,9 +26,10 @@ void Ship::Movement()
 	MoveRight();
 }
 
+// Ship Moves Up
 void Ship::MoveUp()
 {
-	if (GetPosition().y < 7.49)
+	if (GetPosition().y < SHIP_MOVE_OFFSET)
 	{
 		if (gDInput->keyDown(DIK_UP) || gDInput->keyDown(DIK_W))
 		{
@@ -35,9 +38,10 @@ void Ship::MoveUp()
 	}
 }
 
+// Ship Moves Down
 void Ship::MoveDown()
 {
-	if (GetPosition().y > -7.49)
+	if (GetPosition().y > -SHIP_MOVE_OFFSET)
 	{
 		if (gDInput->keyDown(DIK_DOWN) || gDInput->keyDown(DIK_S))
 		{
@@ -45,9 +49,11 @@ void Ship::MoveDown()
 		}
 	}
 }
+
+// Ship Moves Left
 void Ship::MoveLeft()
 {
-	if (GetPosition().x > -7.49)
+	if (GetPosition().x > -SHIP_MOVE_OFFSET)
 	{
 		if (gDInput->keyDown(DIK_LEFT) || gDInput->keyDown(DIK_A))
 		{
@@ -56,9 +62,10 @@ void Ship::MoveLeft()
 	}
 }
 
+// Ship Moves Right
 void Ship::MoveRight()
 {
-	if (GetPosition().x < 7.49)
+	if (GetPosition().x < SHIP_MOVE_OFFSET)
 	{
 		if (gDInput->keyDown(DIK_RIGHT) || gDInput->keyDown(DIK_D))
 		{
