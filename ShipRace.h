@@ -23,6 +23,9 @@ public:
 	// Helper Functions
 	void InitObstacles();
 	void ObstacleSpawnManager();
+	void ResetObstacles(int i);
+
+	int mRnd;
 
 private:
 	RaceTrack* raceTrack;

@@ -29,7 +29,7 @@ void Ship::MoveUp()
 	{
 		if (gDInput->keyDown(DIK_UP) || gDInput->keyDown(DIK_W))
 		{
-			SetPosition(GetPosition().x, GetPosition().y + 10.f * gTimer->GetDeltaTime(), 2.f);
+			SetPosition(GetPosition().x, GetPosition().y + SPEED * gTimer->GetDeltaTime(), 2.f);
 		}
 	}
 }
@@ -40,7 +40,7 @@ void Ship::MoveDown()
 	{
 		if (gDInput->keyDown(DIK_DOWN) || gDInput->keyDown(DIK_S))
 		{
-			SetPosition(GetPosition().x, GetPosition().y - 10.f * gTimer->GetDeltaTime(), 2.f);
+			SetPosition(GetPosition().x, GetPosition().y - SPEED * gTimer->GetDeltaTime(), 2.f);
 		}
 	}
 }
@@ -50,7 +50,7 @@ void Ship::MoveLeft()
 	{
 		if (gDInput->keyDown(DIK_LEFT) || gDInput->keyDown(DIK_A))
 		{
-			SetPosition(GetPosition().x - 10.f * gTimer->GetDeltaTime(), GetPosition().y, 2.f);
+			SetPosition(GetPosition().x - SPEED * gTimer->GetDeltaTime(), GetPosition().y, 2.f);
 		}
 	}
 }
@@ -61,7 +61,7 @@ void Ship::MoveRight()
 	{
 		if (gDInput->keyDown(DIK_RIGHT) || gDInput->keyDown(DIK_D))
 		{
-			SetPosition(GetPosition().x + 10.f * gTimer->GetDeltaTime(), GetPosition().y, 2.f);
+			SetPosition(GetPosition().x + SPEED * gTimer->GetDeltaTime(), GetPosition().y, 2.f);
 		}
 	}
 }

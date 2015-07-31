@@ -17,10 +17,13 @@ public:
 	void Respawn();
 	bool ReachedLimit();
 
+	// Values
+	bool move;
+
 private:
 
 	D3DXVECTOR3 mSpawnPos;
 
-	bool move, respawning;
+	bool respawning;
 };
 

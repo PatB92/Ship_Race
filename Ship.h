@@ -2,6 +2,7 @@
 
 #include "PrimitiveModel.h"
 
+
 class Ship
 	: PrimitiveModel
 {
@@ -19,5 +20,8 @@ private:
 	void MoveDown();
 	void MoveLeft();
 	void MoveRight();
+
+	// const
+	const float SPEED = 20.0f;
 };
 

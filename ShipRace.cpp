@@ -48,14 +48,38 @@ void ShipRace::Stop()
 
 }
 
+// Handles the respawn of obsacles
 void ShipRace::ObstacleSpawnManager()
+{
+	// Get Random Number
+	mRnd = rand() % 9;
+	
+	// If one obstacles reaches the limit, they're all Reset
+	for (int i = 0; i < 9; ++i)
+	{
+		bool reached = obstacles[i]->ReachedLimit();
+		if (reached)
+		{
+			ResetObstacles(mRnd);
+			break;
+		}
+	}
+}
+
+// Reset all the obstacles at their spawn point and stops a random one
+void ShipRace::ResetObstacles(int rnd)
 {
 	for (int i = 0; i < 9; ++i)
 	{
-		bool test = obstacles[i]->ReachedLimit();
-		if (test)
+		obstacles[i]->Respawn();
+
+		if (i == rnd)
 		{
-			obstacles[i]->Respawn();
+			obstacles[i]->move = false;
+		}
+		else
+		{
+			obstacles[i]->move = true;
 		}
 	}
 }
