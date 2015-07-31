@@ -12,6 +12,10 @@ public:
 
 	void Update();
 
+	// Getter
+	float GetPosX() { return GetPosition().x; };
+	float GetPosY() { return GetPosition().y; };
+
 private:
 
 	// Helper Functions
@@ -23,5 +27,9 @@ private:
 
 	// const
 	const float SPEED = 20.0f;
+
+	// Values
+	D3DXVECTOR3 initPos;
+
 };
 

@@ -7,6 +7,7 @@
 #include "Ship.h"
 #include "RaceTrack.h"
 #include "Obstacle.h"
+#include "CollGrid.h"
 
 class ShipRace :
 	public Component
@@ -24,12 +25,15 @@ public:
 	void InitObstacles();
 	void ObstacleSpawnManager();
 	void ResetObstacles(int i);
+	void VerifyCollision();
 
 	int mRnd;
 
 private:
 	RaceTrack* raceTrack;
 	Ship* ship;
-	Obstacle* obstacles[9];
+	Obstacle* mObstacles[9];
+	CollGrid* collisionGrid;
+	CollisionTile* mCurrentInActiveTile;
 };
 

@@ -2,8 +2,9 @@
 
 Ship::Ship()
 	: PrimitiveModel(PrimitiveModel_Type::CONE)
+	, initPos(0.0f, 0.0f, 2.0f)
 {
-	SetPosition(0.f, 0.f, 2.f);
+	SetPosition(initPos.x, initPos.y, initPos.z);
 }
 
 Ship::~Ship()
