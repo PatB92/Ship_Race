@@ -26,8 +26,6 @@ Obstacle::~Obstacle()
 
 void Obstacle::Update()
 {
-	//SetRotationY(GetRotationY() + 10.f * gTimer->GetDeltaTime());
-
 	Movement();
 }
 
@@ -47,4 +45,9 @@ void Obstacle::Respawn()
 {
 	SetPosition(mSpawnPos.x, mSpawnPos.y, 500.0f);
 	respawning = true;
+}
+
+bool Obstacle::ReachedLimit()
+{
+	return GetPosition().z < -15.0f;
 }

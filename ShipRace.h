@@ -20,6 +20,10 @@ public:
 	void Draw();
 	void Stop();
 
+	// Helper Functions
+	void InitObstacles();
+	void ObstacleSpawnManager();
+
 private:
 	RaceTrack* raceTrack;
 	Ship* ship;

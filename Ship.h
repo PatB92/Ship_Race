@@ -13,5 +13,11 @@ public:
 
 private:
 
+	// Helper Functions
+	void Movement();
+	void MoveUp();
+	void MoveDown();
+	void MoveLeft();
+	void MoveRight();
 };
 

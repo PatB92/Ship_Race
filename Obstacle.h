@@ -12,16 +12,15 @@ public:
 
 	void Update();
 
+	// Helper Functions
 	void Movement();
 	void Respawn();
+	bool ReachedLimit();
 
 private:
 
 	D3DXVECTOR3 mSpawnPos;
 
 	bool move, respawning;
-
-	// Helper functions
-	
 };
 
