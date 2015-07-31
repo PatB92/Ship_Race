@@ -6,6 +6,7 @@
 #include "Obstacle.h"
 #include "CollGrid.h"
 #include "EndScreen.h"
+#include "FontApp.h"
 
 
 class ShipRace :
@@ -41,6 +42,7 @@ private:
 	CollGrid* collisionGrid;
 	CollisionTile* mCurrentInActiveTile;
 	EndScreen* endScreen;
+	FontApp* score;
 
 	D3DXVECTOR3 mOriginCamPos;
 	bool mIsGameOver;

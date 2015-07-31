@@ -18,6 +18,7 @@ void ShipRace::Init()
 	InitObstacles();
 	mCurrentInActiveTile = collisionGrid->collisionTiles[4];
 	mOriginCamPos = gEngine->GetCamera()->GetCamPos();
+	score = new FontApp();
 }
 
 void ShipRace::InitObstacles()
